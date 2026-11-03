@@ -1,6 +1,6 @@
-D:\code TKXDPM\src\test\java\starter\CucumberTestSuite.java
-D:\code TKXDPM\src\test\java\starter\unittests\InMemoryDBMockTest.java
-D:\code TKXDPM\src\test\java\starter\unittests\DatValiServiceTest.java
-D:\code TKXDPM\src\test\java\starter\unittests\SimplePresenterTest.java
-D:\code TKXDPM\src\test\java\starter\unittests\SuitcaseOrderTest.java
-D:\code TKXDPM\src\test\java\starter\stepdefinitions\DatValiStepDefinitions.java
+C:\codeckTKXDPM\src\test\java\starter\unittests\InMemoryDBMockTest.java
+C:\codeckTKXDPM\src\test\java\starter\stepdefinitions\DatQuanAoStepDefinitions.java
+C:\codeckTKXDPM\src\test\java\starter\unittests\ClothingOrderTest.java
+C:\codeckTKXDPM\src\test\java\starter\unittests\DatQuanAoServiceTest.java
+C:\codeckTKXDPM\src\test\java\starter\unittests\SimplePresenterTest.java
+C:\codeckTKXDPM\src\test\java\starter\CucumberTestSuite.java

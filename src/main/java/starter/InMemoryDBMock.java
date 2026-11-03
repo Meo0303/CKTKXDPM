@@ -21,5 +21,4 @@ public class InMemoryDBMock implements StoreAble {
     private boolean save(ArrayList<Double> mockDB, double result) {
         return mockDB.add(result);
     }
-
 }

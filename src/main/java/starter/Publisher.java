@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Publisher {
-
     List<Subscriber> listSubscriber;
 
     public Publisher() {
@@ -24,5 +23,4 @@ public class Publisher {
             subscriber.update();
         }
     }
-
 }
