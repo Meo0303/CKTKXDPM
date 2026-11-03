@@ -6,6 +6,7 @@ public class AppDatQuanAo {
     public static void main(String[] args) {
         DatQuanAoModelDTO model = new DatQuanAoModelDTO();
         ArrayList<Double> arr = new ArrayList<>();
+        model.savedOrders = arr;
         InMemoryDBMock db = new InMemoryDBMock(arr);
         SimplePresenter presenter = new SimplePresenter(model);
         DatQuanAoService datQuanAoService = new DatQuanAoService(db, presenter);

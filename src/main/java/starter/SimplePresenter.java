@@ -20,6 +20,7 @@ public class SimplePresenter implements PresentAble {
             modelDTO.actualColor = "pink";
         }
         modelDTO.presentResult = String.valueOf(outputDTO.actualResult);
+        modelDTO.actualSaveStatus = outputDTO.actualSaveStatus;
         Date currDate = new Date();
         modelDTO.VNDate = convertJavaDatetoVNDate(currDate);
     }

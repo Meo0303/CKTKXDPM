@@ -16,19 +16,19 @@ public class DatQuanAoGUIView extends JFrame {
         GridLayout grid = new GridLayout(3, 2, 5, 5);
         setLayout(grid);
 
-        JLabel lbl1 = new JLabel("  Quantity:");
+        JLabel lbl1 = new JLabel("  Quantity (Số lượng):");
         add(lbl1);
-        JTextField tf1 = new JTextField(20);
+        JTextField tf1 = new JTextField(15);
         add(tf1);
 
-        JLabel lbl2 = new JLabel("  Unit Price:");
+        JLabel lbl2 = new JLabel("  Unit Price (Đơn giá):");
         add(lbl2);
-        JTextField tf2 = new JTextField(20);
+        JTextField tf2 = new JTextField(15);
         add(tf2);
 
         JLabel lbl3 = new JLabel("");
         add(lbl3);
-        JButton btX = new JButton("X");
+        JButton btX = new JButton("Đặt mua (X)");
         btX.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,8 +38,9 @@ public class DatQuanAoGUIView extends JFrame {
         add(btX);
 
         pack();
+        setSize(340, 140);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setLocation(220, 260);
         setAlwaysOnTop(true);
         setVisible(true);
         setAlwaysOnTop(false);
