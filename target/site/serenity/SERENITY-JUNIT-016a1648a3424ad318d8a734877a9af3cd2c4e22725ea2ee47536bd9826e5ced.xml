@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="11" name="đặt mua quần áo" skipped="0" tests="11" time="1.17" timestamp="2026-11-03 10:40:21"><testcase name="đặt mua quần áo thất bại khi dữ liệu đầu vào không hợp lệ hoặc bằng không"><failure message="expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;</failure><system-err>expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;&#13;
-starter.stepdefinitions.DatQuanAoStepDefinitions.ngay_hien_tai(DatQuanAoStepDefinitions.java:76)&#13;
-✽.ngày hiện tại 02/11/2026(classpath:features/order_clothing.feature:49)&#13;
-</system-err></testcase><testcase name="đặt mua quần áo thất bại khi số lượng vượt quá giới hạn 20 bộ mỗi đơn"><failure message="expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;</failure><system-err>expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;&#13;
-starter.stepdefinitions.DatQuanAoStepDefinitions.ngay_hien_tai(DatQuanAoStepDefinitions.java:76)&#13;
-✽.ngày hiện tại 02/11/2026(classpath:features/order_clothing.feature:37)&#13;
-</system-err></testcase><testcase name="đặt mua theo nhóm từ 3 đến 20 bộ quần áo hợp lệ được giảm giá 10 phần trăm"><failure message="expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;</failure><system-err>expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;&#13;
-starter.stepdefinitions.DatQuanAoStepDefinitions.ngay_hien_tai(DatQuanAoStepDefinitions.java:76)&#13;
-✽.ngày hiện tại 02/11/2026(classpath:features/order_clothing.feature:23)&#13;
-</system-err></testcase><testcase name="đặt mua lẻ dưới 3 bộ quần áo hợp lệ với mức giá tiêu chuẩn"><failure message="expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;" type="org.opentest4j.AssertionFailedError">expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;</failure><system-err>expected: &lt;02/11/2026&gt; but was: &lt;03/11/2026&gt;&#13;
-starter.stepdefinitions.DatQuanAoStepDefinitions.ngay_hien_tai(DatQuanAoStepDefinitions.java:76)&#13;
-✽.ngày hiện tại 02/11/2026(classpath:features/order_clothing.feature:11)&#13;
-</system-err></testcase></testsuite>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="đặt mua quần áo" skipped="0" tests="11" time="0.89" timestamp="2026-11-03 12:08:48"><testcase name="đặt mua quần áo thất bại khi dữ liệu đầu vào không hợp lệ hoặc bằng không"/><testcase name="đặt mua quần áo thất bại khi số lượng vượt quá giới hạn 20 bộ mỗi đơn"/><testcase name="đặt mua lẻ dưới 3 bộ quần áo hợp lệ với mức giá tiêu chuẩn"/><testcase name="đặt mua theo nhóm từ 3 đến 20 bộ quần áo hợp lệ được giảm giá 10 phần trăm"/></testsuite>

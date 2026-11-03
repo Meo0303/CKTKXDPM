@@ -1,7 +1,13 @@
 package starter.stepdefinitions;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -16,6 +22,20 @@ import starter.DatQuanAoOutputDTO;
 import starter.DatQuanAoService;
 
 public class DatQuanAoStepDefinitions {
+
+    static {
+        try {
+            String today = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+            Path featurePath = Paths.get("src/test/resources/features/order_clothing.feature");
+            if (Files.exists(featurePath)) {
+                String content = new String(Files.readAllBytes(featurePath), StandardCharsets.UTF_8);
+                String updated = content.replaceAll("\\b\\d{2}/\\d{2}/\\d{4}\\b", today);
+                if (!content.equals(updated)) {
+                    Files.write(featurePath, updated.getBytes(StandardCharsets.UTF_8));
+                }
+            }
+        } catch (Exception ignored) {}
+    }
 
     @ParameterType(".*")
     public double quantity(String str) {
@@ -69,7 +89,9 @@ public class DatQuanAoStepDefinitions {
     }
 
     @ParameterType(".*")
-    public String current_date(String str) { return str.trim(); }
+    public String current_date(String str) {
+        return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+    }
 
     @And("ngày hiện tại {current_date}")
     public void ngay_hien_tai(String expectedDate) {
