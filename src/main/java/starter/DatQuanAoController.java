@@ -9,17 +9,17 @@ public class DatQuanAoController {
         this.publ = publ;
     }
 
-    public void control(String quantity, String unitPrice) {
-        double realQuantity = -1;
-        double realUnitPrice = -1;
+    public void control(String subTotal, String shippingFee) {
+        double realSubTotal = -1;
+        double realShippingFee = -1;
         try {
-            realQuantity = Double.parseDouble(quantity.trim());
-            realUnitPrice = Double.parseDouble(unitPrice.trim());
+            realSubTotal = Double.parseDouble(subTotal.trim());
+            realShippingFee = Double.parseDouble(shippingFee.trim());
         } catch (Exception e) {
-            realQuantity = -1;
-            realUnitPrice = -1;
+            realSubTotal = -1;
+            realShippingFee = -1;
         }
-        datQuanAoService.execute(realQuantity, realUnitPrice);
+        datQuanAoService.execute(realSubTotal, realShippingFee);
         publ.notifySubscriber();
     }
 }

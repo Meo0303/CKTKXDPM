@@ -1,14 +1,13 @@
 package starter;
 
 public class ClothingOrder {
-    public double calculateTotal(double quantity, double unitPrice) {
-        if (quantity <= 0 || quantity > 20 || unitPrice <= 0) {
+    public double calculateTotal(double subTotal, double shippingFee) {
+        if (subTotal < 50 || subTotal > 5000 || shippingFee <= 0 || shippingFee > 200) {
             return -1;
         }
-        double actualResult = quantity * unitPrice;
-        if (quantity >= 3) {
-            actualResult = actualResult * 0.9;
+        if (CheckPriorityOrderService.checkPriorityOrder(subTotal)) {
+            return subTotal;
         }
-        return actualResult;
+        return subTotal + shippingFee;
     }
 }

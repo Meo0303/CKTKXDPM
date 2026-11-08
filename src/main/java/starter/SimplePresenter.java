@@ -14,7 +14,7 @@ public class SimplePresenter implements PresentAble {
     public void format(DatQuanAoOutputDTO outputDTO) {
         if (outputDTO.actualResult < 0) {
             modelDTO.actualColor = "gray";
-        } else if (outputDTO.bulkOrder) {
+        } else if (outputDTO.priorityOrder) {
             modelDTO.actualColor = "red";
         } else {
             modelDTO.actualColor = "pink";

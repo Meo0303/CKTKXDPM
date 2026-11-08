@@ -9,9 +9,9 @@ public class DatQuanAoService {
         this.presentAble = presentAble;
     }
 
-    public DatQuanAoOutputDTO execute(double quantity, double unitPrice) {
+    public DatQuanAoOutputDTO execute(double subTotal, double shippingFee) {
         ClothingOrder orderAble = new ClothingOrder();
-        double actualResult = orderAble.calculateTotal(quantity, unitPrice);
+        double actualResult = orderAble.calculateTotal(subTotal, shippingFee);
         boolean actualSaveStatus = false;
         if (actualResult >= 0) {
             actualSaveStatus = storeAble.save(actualResult);
@@ -19,8 +19,7 @@ public class DatQuanAoService {
         DatQuanAoOutputDTO outputDTO = new DatQuanAoOutputDTO();
         outputDTO.actualResult = actualResult;
         outputDTO.actualSaveStatus = actualSaveStatus;
-        boolean bulkOrder = CheckBulkOrderService.checkBulkOrder(quantity);
-        outputDTO.bulkOrder = bulkOrder;
+        outputDTO.priorityOrder = CheckPriorityOrderService.checkPriorityOrder(subTotal);
         presentAble.format(outputDTO);
         return outputDTO;
     }

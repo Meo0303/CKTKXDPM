@@ -7,14 +7,14 @@ public class AppDatQuanAo {
         DatQuanAoModelDTO model = new DatQuanAoModelDTO();
         ArrayList<Double> arr = new ArrayList<>();
         model.savedOrders = arr;
-        InMemoryDBMock db = new InMemoryDBMock(arr);
+        InMemoryDBMock dbMock = new InMemoryDBMock(arr);
         SimplePresenter presenter = new SimplePresenter(model);
-        DatQuanAoService datQuanAoService = new DatQuanAoService(db, presenter);
+        DatQuanAoService datQuanAoService = new DatQuanAoService(dbMock, presenter);
         DatQuanAoController controller = new DatQuanAoController(datQuanAoService, model);
         DatQuanAoGUIView gui = new DatQuanAoGUIView();
         gui.setController(controller);
 
-        ResultGUIView subscriber = new ResultGUIView(model);
-        model.addSubscriber(subscriber);
+        ResultGUIView resultView = new ResultGUIView(model);
+        model.addSubscriber(resultView);
     }
 }

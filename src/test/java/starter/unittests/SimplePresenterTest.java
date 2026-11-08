@@ -14,39 +14,39 @@ public class SimplePresenterTest {
     }
 
     @Test
-    void testFormat_RetailOrderPink() {
+    void testFormat_StandardOrderPink() {
         DatQuanAoOutputDTO outputDTO = new DatQuanAoOutputDTO();
-        outputDTO.actualResult = 200;
+        outputDTO.actualResult = 230;
         outputDTO.actualSaveStatus = true;
-        outputDTO.bulkOrder = false;
+        outputDTO.priorityOrder = false;
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         presenter.format(outputDTO);
         assertEquals(getToday(), modelDTO.VNDate);
         assertEquals("pink", modelDTO.actualColor);
-        assertEquals("200.0", modelDTO.presentResult);
+        assertEquals("230.0", modelDTO.presentResult);
     }
 
     @Test
-    void testFormat_BulkOrderRed() {
+    void testFormat_PriorityOrderRed() {
         DatQuanAoOutputDTO outputDTO = new DatQuanAoOutputDTO();
-        outputDTO.actualResult = 360;
+        outputDTO.actualResult = 600;
         outputDTO.actualSaveStatus = true;
-        outputDTO.bulkOrder = true;
+        outputDTO.priorityOrder = true;
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         presenter.format(outputDTO);
         assertEquals(getToday(), modelDTO.VNDate);
         assertEquals("red", modelDTO.actualColor);
-        assertEquals("360.0", modelDTO.presentResult);
+        assertEquals("600.0", modelDTO.presentResult);
     }
 
     @Test
-    void testFormat_InvalidOrderGray() {
+    void testFormat_RejectedOrderGray() {
         DatQuanAoOutputDTO outputDTO = new DatQuanAoOutputDTO();
         outputDTO.actualResult = -1;
         outputDTO.actualSaveStatus = false;
-        outputDTO.bulkOrder = false;
+        outputDTO.priorityOrder = false;
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         presenter.format(outputDTO);

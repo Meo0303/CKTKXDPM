@@ -1,55 +1,55 @@
-Feature: đặt mua quần áo
-Như là một khách hàng mua sắm tại VietFashion
-Tôi muốn biết tổng tiền của đơn hàng đặt mua quần áo
-Để được hưởng ưu đãi giảm giá nhóm và đỡ phải tốn thời gian tính bằng giấy
+Feature: khởi tạo và xử lý đơn hàng quần áo
+Như là một khách hàng chốt đơn tại hệ thống VietFashion
+Tôi muốn khởi tạo đơn hàng và biết tổng thanh toán cuối cùng kèm ưu đãi vận chuyển
+Để đơn hàng hợp lệ được lưu trữ vào hệ thống và đơn hàng lớn được miễn phí giao hàng
 
-Scenario Outline: đặt mua lẻ dưới 3 bộ quần áo hợp lệ với mức giá tiêu chuẩn
-Given số lượng quần áo <quantity> và đơn giá <unit_price>
-When tôi thực hiện đặt mua quần áo
-Then tôi được thông báo giá trị là <result> <color>
-And lưu kết quả <save_result>
-And ngày hiện tại <current_date>
-
-Examples:
-| current_date | quantity | unit_price | result | color | save_result | reason                     |
-| 03/11/2026   | 1        | 150        | 150    | pink  | true        | mua le 1 bo nguyen gia     |
-| 03/11/2026   | 2        | 100        | 200    | pink  | true        | mua le 2 bo nguyen gia     |
-
-Scenario Outline: đặt mua theo nhóm từ 3 đến 20 bộ quần áo hợp lệ được giảm giá 10 phần trăm
-Given số lượng quần áo <quantity> và đơn giá <unit_price>
-When tôi thực hiện đặt mua quần áo
-Then tôi được thông báo giá trị là <result> <color>
-And lưu kết quả <save_result>
-And ngày hiện tại <current_date>
+Scenario Outline: khởi tạo đơn hàng tiêu chuẩn từ 50 đến dưới 500 nghìn hợp lệ có tính phí vận chuyển
+Given tiền hàng của đơn <sub_total> và phí vận chuyển <shipping_fee>
+When tôi thực hiện khởi tạo đơn hàng quần áo
+Then tôi được thông báo tổng thanh toán đơn hàng là <result> <color>
+And lưu đơn hàng <save_result>
+And ngày lập đơn <current_date>
 
 Examples:
-| current_date | quantity | unit_price | result | color | save_result | reason                     |
-| 03/11/2026   | 3        | 100        | 270    | red   | true        | mua nhom 3 bo giam 10%     |
-| 03/11/2026   | 4        | 100        | 360    | red   | true        | mua nhom 4 bo giam 10%     |
-| 03/11/2026   | 10       | 200        | 1800   | red   | true        | mua nhom 10 bo giam 10%    |
-| 03/11/2026   | 20       | 100        | 1800   | red   | true        | mua nhom toi da 20 bo      |
+| current_date | sub_total | shipping_fee | result | color | save_result | reason                              |
+| 08/11/2026   | 50        | 25           | 75     | pink  | true        | don toi thieu 50k cong ship 25k     |
+| 08/11/2026   | 200       | 30           | 230    | pink  | true        | don tieu chuan 200k cong ship 30k   |
+| 08/11/2026   | 499       | 30           | 529    | pink  | true        | sat moc 500k van tinh ship          |
 
-Scenario Outline: đặt mua quần áo thất bại khi số lượng vượt quá giới hạn 20 bộ mỗi đơn
-Given số lượng quần áo <quantity> và đơn giá <unit_price>
-When tôi thực hiện đặt mua quần áo
-Then tôi được thông báo giá trị là <result> <color>
-And lưu kết quả <save_result>
-And ngày hiện tại <current_date>
-
-Examples:
-| current_date | quantity | unit_price | result | color | save_result | reason                     |
-| 03/11/2026   | 21       | 100        | -1     | gray  | false       | vuot qua gioi han 20 bo    |
-| 03/11/2026   | 25       | 100        | -1     | gray  | false       | vuot qua gioi han 20 bo    |
-
-Scenario Outline: đặt mua quần áo thất bại khi dữ liệu đầu vào không hợp lệ hoặc bằng không
-Given số lượng quần áo <quantity> và đơn giá <unit_price>
-When tôi thực hiện đặt mua quần áo
-Then tôi được thông báo giá trị là <result> <color>
-And lưu kết quả <save_result>
-And ngày hiện tại <current_date>
+Scenario Outline: khởi tạo đơn hàng ưu tiên từ 500 đến 5000 nghìn hợp lệ được miễn phí vận chuyển
+Given tiền hàng của đơn <sub_total> và phí vận chuyển <shipping_fee>
+When tôi thực hiện khởi tạo đơn hàng quần áo
+Then tôi được thông báo tổng thanh toán đơn hàng là <result> <color>
+And lưu đơn hàng <save_result>
+And ngày lập đơn <current_date>
 
 Examples:
-| current_date | quantity | unit_price | result | color | save_result | reason                     |
-| 03/11/2026   | 0        | 100        | -1     | gray  | false       | so luong bang 0            |
-| 03/11/2026   | -2       | 100        | -1     | gray  | false       | so luong am                |
-| 03/11/2026   | abc      | 100        | -1     | gray  | false       | sai dinh dang so           |
+| current_date | sub_total | shipping_fee | result | color | save_result | reason                              |
+| 08/11/2026   | 500       | 30           | 500    | red   | true        | cham moc 500k duoc freeship         |
+| 08/11/2026   | 1200      | 40           | 1200   | red   | true        | don uu tien 1200k duoc freeship     |
+| 08/11/2026   | 5000      | 50           | 5000   | red   | true        | don cham tran 5000k duoc freeship   |
+
+Scenario Outline: từ chối khởi tạo đơn hàng khi tiền hàng ngoài hạn mức từ 50 đến 5000 nghìn
+Given tiền hàng của đơn <sub_total> và phí vận chuyển <shipping_fee>
+When tôi thực hiện khởi tạo đơn hàng quần áo
+Then tôi được thông báo tổng thanh toán đơn hàng là <result> <color>
+And lưu đơn hàng <save_result>
+And ngày lập đơn <current_date>
+
+Examples:
+| current_date | sub_total | shipping_fee | result | color | save_result | reason                              |
+| 08/11/2026   | 49        | 30           | -1     | gray  | false       | duoi muc don toi thieu 50k          |
+| 08/11/2026   | 5001      | 30           | -1     | gray  | false       | vuot han muc an toan 5000k          |
+
+Scenario Outline: từ chối khởi tạo đơn hàng khi phí vận chuyển hoặc dữ liệu đầu vào không hợp lệ
+Given tiền hàng của đơn <sub_total> và phí vận chuyển <shipping_fee>
+When tôi thực hiện khởi tạo đơn hàng quần áo
+Then tôi được thông báo tổng thanh toán đơn hàng là <result> <color>
+And lưu đơn hàng <save_result>
+And ngày lập đơn <current_date>
+
+Examples:
+| current_date | sub_total | shipping_fee | result | color | save_result | reason                              |
+| 08/11/2026   | 300       | 0            | -1     | gray  | false       | phi van chuyen bang 0               |
+| 08/11/2026   | 300       | 250          | -1     | gray  | false       | phi van chuyen vuot tran 200k       |
+| 08/11/2026   | abc       | 30           | -1     | gray  | false       | sai dinh dang so                    |

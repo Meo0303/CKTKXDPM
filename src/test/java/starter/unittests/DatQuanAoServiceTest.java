@@ -10,39 +10,41 @@ import starter.DatQuanAoModelDTO;
 import starter.DatQuanAoOutputDTO;
 import starter.DatQuanAoService;
 
-@DisplayName("Khi dịch vụ đặt mua quần áo thực thi")
+@DisplayName("Khi dịch vụ khởi tạo đơn hàng quần áo thực thi")
 public class DatQuanAoServiceTest {
     @Test
-    void testExecute_RetailOrder() {
+    void testExecute_StandardOrder() {
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         InMemoryDBMock mockDB = new InMemoryDBMock(new ArrayList<>());
         DatQuanAoService service = new DatQuanAoService(mockDB, presenter);
-        DatQuanAoOutputDTO out = service.execute(2, 100);
-        assertEquals(200, out.actualResult);
+        DatQuanAoOutputDTO out = service.execute(200, 30);
+        assertEquals(230, out.actualResult);
         assertEquals("pink", modelDTO.actualColor);
-        assertEquals(false, out.bulkOrder);
+        assertEquals(false, out.priorityOrder);
         assertEquals(true, out.actualSaveStatus);
     }
+
     @Test
-    void testExecute_BulkOrder() {
+    void testExecute_PriorityOrder() {
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         InMemoryDBMock mockDB = new InMemoryDBMock(new ArrayList<>());
         DatQuanAoService service = new DatQuanAoService(mockDB, presenter);
-        DatQuanAoOutputDTO out = service.execute(4, 100);
-        assertEquals(360, out.actualResult);
+        DatQuanAoOutputDTO out = service.execute(600, 35);
+        assertEquals(600, out.actualResult);
         assertEquals("red", modelDTO.actualColor);
-        assertEquals(true, out.bulkOrder);
+        assertEquals(true, out.priorityOrder);
         assertEquals(true, out.actualSaveStatus);
     }
+
     @Test
-    void testExecute_ExceedLimit() {
+    void testExecute_RejectedOrder() {
         DatQuanAoModelDTO modelDTO = new DatQuanAoModelDTO();
         SimplePresenter presenter = new SimplePresenter(modelDTO);
         InMemoryDBMock mockDB = new InMemoryDBMock(new ArrayList<>());
         DatQuanAoService service = new DatQuanAoService(mockDB, presenter);
-        DatQuanAoOutputDTO out = service.execute(25, 100);
+        DatQuanAoOutputDTO out = service.execute(5500, 30);
         assertEquals(-1, out.actualResult);
         assertEquals("gray", modelDTO.actualColor);
         assertEquals(false, out.actualSaveStatus);
