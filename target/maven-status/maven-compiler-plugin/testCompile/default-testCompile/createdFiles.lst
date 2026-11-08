@@ -1,6 +1,0 @@
-starter\CucumberTestSuite.class
-starter\unittests\DatQuanAoServiceTest.class
-starter\unittests\InMemoryDBMockTest.class
-starter\unittests\ClothingOrderTest.class
-starter\unittests\SimplePresenterTest.class
-starter\stepdefinitions\DatQuanAoStepDefinitions.class
